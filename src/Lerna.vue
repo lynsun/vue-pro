@@ -1,28 +1,18 @@
 <template>
   <div id="app">
-    <hello></hello>
-    <v-button>button</v-button>
-    <el-button>默认按钮</el-button>
+    hello <el-button>world</el-button>
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import atui from 'atui';
-import 'atui/dist/greater-blue.css';
-import { elButton } from 'element-ui';
-
-import Hello from './components/Hello';
-
-const vButton = atui.Button;
+import elButton from 'element-ui/lib/button';
 
 Vue.component(elButton.name, elButton);
 
 export default {
   name: 'app',
   components: {
-    Hello,
-    vButton,
     elButton,
   },
 };
