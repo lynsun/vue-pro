@@ -9,7 +9,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "atui": "0.0.33",
+    "atui": "0.0.36",
     "element-ui": "^1.1.2",
     "sugar-select": "0.1.0",
     "sugarboy": "^0.1.0",
