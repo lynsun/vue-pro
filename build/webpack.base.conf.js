@@ -2,6 +2,8 @@ var path = require('path')
 var config = require('../config')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
+var ExtractTextPlugin = require("extract-text-webpack-plugin")
+
 
 var env = process.env.NODE_ENV
 // check env & config/index.js to decide whether to enable CSS source maps for the
@@ -33,7 +35,7 @@ module.exports = {
     fallback: [path.join(__dirname, '../node_modules')]
   },
   module: {
-    preLoaders: [
+    preLoaders: [/*
       {
         test: /\.vue$/,
         loader: 'eslint',
@@ -45,7 +47,7 @@ module.exports = {
         loader: 'eslint',
         include: projectRoot,
         exclude: /node_modules/
-      }
+      }*/
     ],
     loaders: [
       {
@@ -57,6 +59,19 @@ module.exports = {
         loader: 'babel',
         include: projectRoot,
         exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader",
+        include: [
+          'src/',
+          'node_modules/atui/dist/'
+        ]
+      },
+      {
+        test: /\.less$/,
+        //loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+        loader: "style-loader!css-loader!less-loader"
       },
       {
         test: /\.json$/,

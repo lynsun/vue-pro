@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <hello></hello>
-    <v-button>button</v-button>
-    <el-button>默认按钮</el-button>
+    <v-button @click.native="onClick">button</v-button>
+    <v-tabs :headers="apps">
+      <v-tab v-for="app in apps" :header="app">{{app}}</v-tab>
+    </v-tabs>
   </div>
 </template>
 
@@ -10,20 +12,33 @@
 import Vue from 'vue';
 import atui from 'atui';
 import 'atui/dist/greater-blue.css';
-import { elButton } from 'element-ui';
 
 import Hello from './components/Hello';
 
-const vButton = atui.Button;
-
-Vue.component(elButton.name, elButton);
+// Vue.component(elButton.name, elButton);
+Vue.use(atui)
 
 export default {
   name: 'app',
   components: {
     Hello,
+    vTabs,
+    vTab,
     vButton,
-    elButton,
+    // elButton,
+  },
+  data() {
+    return {
+      apps: [
+        'tab1', 'tab2',
+      ],
+    };
+  },
+  methods: {
+    onClick() {
+      console.log(111);
+      this.apps.splice(0, 1);
+    },
   },
 };
 </script>
